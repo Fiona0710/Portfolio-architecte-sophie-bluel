@@ -141,7 +141,10 @@ body {
 	font-size: 14px;
 	margin: auto;
 }
-
+a{
+	color: black;
+	text-decoration: none;
+}
 header {
 	display: flex;
 	max-width: 1140px;
@@ -191,10 +194,13 @@ nav li {
 	font-size: 1.2em;
 }
 
-nav li:hover {
+nav li a:hover {
 	color: #B1663C;
 }
-
+.header-login a:hover{
+	font-weight: 600;
+	color: black;
+}
 #introduction {
 	display: flex;
 	align-items: center;
@@ -254,7 +260,9 @@ nav li:hover {
     justify-content: center;
     padding: 0px 10px 0px 10px;
     white-space: nowrap;
+	cursor: pointer;
 }
+
 .filter_active{
 	color:#FFFEF8;
 	background:#1D6154 ;
@@ -272,34 +280,34 @@ nav li:hover {
 
 }
 
-#contact {
+#contact, #login {
 	width: 50%;
 	margin: auto;
 }
 
-#contact>* {
+#contact>*, #login>* {
 	text-align: center;
 }
 
-#contact h2 {
+#contact h2,#login h2 {
 	margin-bottom: 20px;
 }
 
-#contact form {
+#contact form ,#login form {
 	display: flex;
 	flex-direction: column;
 	text-align: left;
 	margin-top: 30px;
 }
 
-#contact input {
+#contact input,#login input {
 	height: 50px;
 	font-size: 1.2em;
 	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
 	border: none;
 }
 
-#contact label {
+#contact label, #login label {
 	margin: 2em 0 1em 0;
 }
 
@@ -319,12 +327,24 @@ input[type="submit"] {
 	color: white;
 }
 
+input[type="submit"]:hover{
+	background-color:  #0E2F28;
+}
+
+#login form p {
+	padding-bottom: 355px;
+	text-align: center;
+	text-decoration: underline;
+}
+
 footer {
-	background-color: #fff;
+	background-color: #fff;	
+	padding-top:1.6em  ;
+	padding-bottom:1.6em ;
 }
 
 footer nav ul {
 	display: flex;
 	justify-content: flex-end;
-	margin: 2em;
+	padding-right: 2em;
 }
