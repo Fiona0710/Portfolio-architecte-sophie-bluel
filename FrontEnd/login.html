@@ -27,12 +27,13 @@
         <h2>Log In</h2>
         <form action="./index.html" method="post" id="form">
             <label for="email">Email</label>
-            <input type="email" name="email" id="email" required>
+            <input type="email" name="email" id="email" required pattern="[^@\s]+@[^@\s]+\.[^@\s]+" autofocus>
             <label for="mot de passe">Mot de passe</label>
-            <input type="password" name="mot de passe" id="password" required></input>
+            <input type="password" name="mot de passe" id="password" required minlength="6" maxlength="6"></input><br>
+            <span id="erreur"></span>
             <input type="submit" value="Envoyer">
             <p><a href="#">Mot de passe oublié</a></p>
-        </form>
+        </form>   
     </section>
 </main>
     <footer>
@@ -42,6 +43,8 @@
             </ul>
         </nav>
     </footer>
-</body>
+<script src="./js/function-login.js"></script>
 <script src="./js/login.js"></script>
+    
+</body>
 </html>
