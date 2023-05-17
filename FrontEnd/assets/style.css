@@ -135,7 +135,7 @@ table {
 
 /** end reset css**/
 body {
-	max-width: 1400px;
+	max-width: 1440px;
 	background-color: #FFFEF8;
 	font-family: 'Work Sans';
 	font-size: 14px;
@@ -151,9 +151,32 @@ header {
 	justify-content: space-between;
 	margin: 50px auto;
 }
+#blackHeadband{
+	position:absolute;
+	top:0;
+	left:0;
+	right: 0; 
+	max-width: 1440px;
+	margin: auto;
+	height: 59px;
+	background: black;
+	color:  #FFFFFF;
+	font-size: 16px;
+	display: flex;
+	justify-content: center;
+    align-items: center;
+	gap: 21px;
+}
+header button {
+	background: #FFFFFF;
+	border-radius: 60px;
+	padding:11px 23px 11px 23px;
+	font-family: 'Work Sans';
+	font-size: 14px;
 
+}	
 main {
-	max-width: 1140px;
+	max-width: 1000px;
 	margin: auto;
 }
 
@@ -197,30 +220,50 @@ nav li {
 nav li a:hover {
 	color: #B1663C;
 }
-.header-login a:hover{
+.header-logout a:hover{
 	font-weight: 600;
 	color: black;
+	
 }
+
+#logout:hover{
+	cursor:pointer;
+	color: #B1663C;
+}
+
 #introduction {
 	display: flex;
 	align-items: center;
+	gap:5%;
 }
 
 #introduction figure {
-	flex: 1;
+	width: 50%;
 }
 
 #introduction img {
 	display: block;
-	margin: auto;
-	width: 80%;
+	width:95%;
+	padding-bottom:6px;
+}
+
+.positionEdit{
+	display: flex;
+	gap:10px;
+	padding-top:10px;
+	cursor: pointer;
+}
+.positionEdit i{
+	font-size: 15px;
 }
 
 #introduction article {
-	flex: 1;
+	width: 40%;
+	
 }
 
 #introduction h2 {
+	margin-top: 0.6em;
 	margin-bottom: 1em;
 }
 
@@ -232,11 +275,17 @@ nav li a:hover {
 	text-align: center;
 	margin-bottom: 1.5em;
 }
+
 #portfolio{
 	display: flex;
     flex-direction: column;
     align-items: center;
 	
+}
+#directionEdit{
+	display: flex;
+	gap: 30px;
+
 }
 #filters{
 	display: flex;
