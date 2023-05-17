@@ -1,3 +1,9 @@
+// Fonction pour recupérer les projets en faisant un appel a l'api 
+function fetchWorks() {
+    return fetch("http://localhost:5678/api/works")
+      .then(data => data.json());
+  }
+
 // Fonction pour afficher les filtres 
 function displayFilters(dataWork){
     const filters = document.getElementById("filters");
@@ -14,6 +20,7 @@ function displayFilters(dataWork){
         const categoryName = dataWork.find(work => work.categoryId === categoryId).category.name;                 
         filters. innerHTML += `<li class="filter" id="${categoryId}">${categoryName}</li>`;
     });
+    
 }
 
 
@@ -53,11 +60,11 @@ function showAllWorks(){
 };
 
 // Fonction pour filtrer par categorie et afficher les projets 
-function filterWorks(buttonFilter){
-    const buttonFilterIdValue = buttonFilter.getAttribute("id");   
+function filterWorks(event){
+    const buttonFilterIdValue = event.target.getAttribute("id");   
        deleteActiveClass();
        // Ajoute la classe "filter_active" au filtre actuel
-       buttonFilter.classList.add("filter_active");
+       event.target.classList.add("filter_active");
        // Récuperation de tous les travaux
        const works = document.querySelectorAll(".work");
        // Parcours tous les travaux 
@@ -67,3 +74,38 @@ function filterWorks(buttonFilter){
        }); 
          
 };
+
+// fonction rajouter des elements coté admin 
+function createEditElement() {
+    const displayEdit = document.createElement("div");
+    displayEdit.classList.add("positionEdit");
+    displayEdit.textContent = "modifier";
+  
+    const iconElement = document.createElement("i");
+    iconElement.classList.add("fa-regular", "fa-pen-to-square");
+    displayEdit.insertBefore(iconElement, displayEdit.firstChild);
+    return displayEdit;
+  }
+
+function displayHeadbandEditMod(){
+    const header = document.querySelector("header");
+    header.style.marginTop = "100px";
+  
+    const headerH1 = document.querySelector("header h1");
+  
+    const divBlackHeadband = document.createElement("div");
+    divBlackHeadband.id = "blackHeadband";
+    header.insertBefore(divBlackHeadband, headerH1);
+  
+    const divEditMod = document.createElement("div");
+    divEditMod.classList.add("positionEdit");
+    divEditMod.textContent = "Mode édition";
+    divEditMod.style.paddingTop = "0";
+    divEditMod.insertBefore(createEditElement().firstChild, divEditMod.firstChild);
+  
+    const buttonPublishChange = document.createElement("button");
+    buttonPublishChange.textContent = "publier les changements";
+  
+    divBlackHeadband.appendChild(divEditMod);
+    divBlackHeadband.appendChild(buttonPublishChange);
+}
