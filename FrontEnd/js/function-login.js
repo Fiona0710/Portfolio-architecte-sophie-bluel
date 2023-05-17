@@ -36,7 +36,6 @@ async function submitForm(event) {
         //Enregistrement du token et redirection vers la page d'acceuil
         window.localStorage.setItem("token", token);
         window.location.href = './index.html';
-
     //Affichage de differents messages d'erreur en fonction du code recu
       } else if (response.status === 401) {
         showError("L'email ou et le mot de passe n'est pas valide.<br>La connexion n'est pas autorisée !!!");
