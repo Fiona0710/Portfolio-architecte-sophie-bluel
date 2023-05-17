@@ -1,10 +1,10 @@
 // Récupération des données de l'API "works"
-fetch("http://localhost:5678/api/works")
-  .then(data => data.json())
+  fetchWorks()
   .then(dataWork => {
 
     // Affichage des filtres
     displayFilters(dataWork);
+    
     
     // Affichage des projets dans la galerie
     displayGallery(dataWork); 
@@ -20,12 +20,15 @@ fetch("http://localhost:5678/api/works")
     et pour chaque filtre, ajout d'un événement */
     buttonFilters.forEach(buttonFilter => {
             if (buttonFilter !== filterAll) {
-                buttonFilter.addEventListener("click", () => {
-                    filterWorks(buttonFilter);
+                buttonFilter.addEventListener("click", (event) => {
+                    filterWorks(event);
                 });
             }
-       });      
+       });
+       
 });
+
+
 
 
 
