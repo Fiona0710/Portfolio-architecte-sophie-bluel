@@ -75,12 +75,14 @@ function filterWorks(event){
          
 };
 
-// fonction rajouter des elements coté admin 
+// fonctions rajouter des elements coté admin 
 function createEditElement() {
     const displayEdit = document.createElement("div");
+    displayEdit.setAttribute("role", "button");
     displayEdit.classList.add("positionEdit");
     displayEdit.textContent = "modifier";
-  
+    
+
     const iconElement = document.createElement("i");
     iconElement.classList.add("fa-regular", "fa-pen-to-square");
     displayEdit.insertBefore(iconElement, displayEdit.firstChild);
@@ -109,3 +111,18 @@ function displayHeadbandEditMod(){
     divBlackHeadband.appendChild(divEditMod);
     divBlackHeadband.appendChild(buttonPublishChange);
 }
+
+//création du bouton de fermeture de la modale
+function createCloseButton(){
+    const buttonClose = document.createElement("div");
+      buttonClose.setAttribute("role", "button");
+      buttonClose.classList.add("modal-close","modal-trigger");
+    
+    const iconClose = document.createElement("i");
+      iconClose.classList.add("fa-solid", "fa-xmark");
+      
+    document.querySelector(".modal-wrapper").appendChild(buttonClose);  
+    buttonClose.appendChild(iconClose);
+    return buttonClose
+  }
+
