@@ -54,6 +54,8 @@ modalTriggers.forEach(trigger => trigger.addEventListener("click", toogleModal))
   function toogleModal(){
     const modal = document.getElementById("modal");
     modal.classList.toggle("active")
+    const modalElement = document.querySelector(".modal-wrapper");
+    modalElement.scrollIntoView({ behavior: "smooth", block: "start" });
   }
 
 //Afficher la galerie de la modale 
