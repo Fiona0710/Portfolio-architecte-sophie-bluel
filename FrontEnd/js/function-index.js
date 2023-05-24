@@ -22,21 +22,41 @@ function displayFilters(dataWork){
     });
     
 }
+// fonction pour afficher la gallery de la page d'acceuil ou de la modale
+function fetchWorksDisplayGallery(targetElement) {
+  return fetchWorks()
+    .then(dataWork => {
+      const galleryElement = document.querySelector(targetElement);
 
+      dataWork.forEach(jsonWork => {
+        const figure = document.createElement('figure');
+        figure.classList.add('work');
+        figure.dataset.category = jsonWork.categoryId;
 
-// Fonction pour afficher la gallerie
-function displayGallery(dataWork){
-    const gallery = document.querySelector(".gallery");
+        const img = document.createElement('img');
+        img.src = jsonWork.imageUrl;
+        img.alt = 'image du projet';
 
-    /*Parcours de la liste de travaux récupérés, 
-    et pour chaque travail, création de l'élément HTML correspondant en y incluant son image,
-    son titre et sa catégorie*/
-    dataWork.forEach(jsonWork => {
-        gallery.innerHTML += `<figure class="work" data-category="${jsonWork.categoryId}">
-                                <img src="${jsonWork.imageUrl}" alt="image du projet">
-                                <figcaption>${jsonWork.title}</figcaption>
-                               </figure>`;
-    });     
+        figure.appendChild(img);
+
+        if (targetElement === '.gallery') {
+          const figcaption = document.createElement('figcaption');
+          figcaption.textContent = jsonWork.title;
+          figure.appendChild(figcaption);
+        }
+
+        if (targetElement === '#modal-gallery') {
+          const figcaption = document.createElement('figcaption');
+          figcaption.textContent = 'éditer';
+          figure.appendChild(figcaption);
+          const trashButton = createButtonElement()
+
+    
+        }
+
+        galleryElement.appendChild(figure);
+      });
+    });
 }
 
 
@@ -75,54 +95,95 @@ function filterWorks(event){
          
 };
 
-// fonctions rajouter des elements coté admin 
-function createEditElement() {
-    const displayEdit = document.createElement("div");
-    displayEdit.setAttribute("role", "button");
-    displayEdit.classList.add("positionEdit");
-    displayEdit.textContent = "modifier";
-    
+/************************* Fonctions pour rajouter des élèments coté admin ***********************/
 
-    const iconElement = document.createElement("i");
-    iconElement.classList.add("fa-regular", "fa-pen-to-square");
+// fonction pour creer le bouton et l'icon "modifier"
+function createEditElement() {
+    const displayEdit = createButtonElement(['positionEdit'],"modifier");
+   
+    const iconElement = createIconElement("fa-regular", "fa-pen-to-square");
+    
     displayEdit.insertBefore(iconElement, displayEdit.firstChild);
     return displayEdit;
-  }
+};
 
+// Fonction pour afficher la bande noir "mode édition"
 function displayHeadbandEditMod(){
     const header = document.querySelector("header");
     header.style.marginTop = "100px";
   
     const headerH1 = document.querySelector("header h1");
-  
     const divBlackHeadband = document.createElement("div");
     divBlackHeadband.id = "blackHeadband";
     header.insertBefore(divBlackHeadband, headerH1);
-  
-    const divEditMod = document.createElement("div");
-    divEditMod.classList.add("positionEdit");
-    divEditMod.textContent = "Mode édition";
+   
+    const divEditMod =createButtonElement(['positionEdit'],"Mode édition");
     divEditMod.style.paddingTop = "0";
     divEditMod.insertBefore(createEditElement().firstChild, divEditMod.firstChild);
-  
-    const buttonPublishChange = document.createElement("button");
-    buttonPublishChange.textContent = "publier les changements";
+
+    const publishChangesButton = createButtonElement (['publish-changes-button'],"publier les changements");
   
     divBlackHeadband.appendChild(divEditMod);
-    divBlackHeadband.appendChild(buttonPublishChange);
+    divBlackHeadband.appendChild(publishChangesButton);
+};
+
+/**************************** Fonction pour la modale *********************************/
+
+//fonction pour creer le bouton de fermeture de la modale
+function createCloseButton(){
+  const buttonClose = createButtonElement(["modal-close", "modal-trigger"]); 
+
+  const iconClose = createIconElement("fa-solid", "fa-xmark");
+      
+  document.querySelector(".modal-wrapper").appendChild(buttonClose); 
+  buttonClose.appendChild(iconClose);
+  return buttonClose
+};
+
+//fonction pour creer le bouton precedent de la modale
+function createPrevButton(){
+  const buttonPrev = createButtonElement(['modal-prev']);
+
+  const iconPrev = createIconElement("fa-solid","fa-arrow-left-long");
+  buttonPrev.appendChild(iconPrev);
+
+  document.getElementById("modal-page-two").appendChild(buttonPrev);  
+  
+  buttonPrev.addEventListener('click', modalePagefirst);
+  return buttonPrev;
+}; 
+// fonction pour modifier la valeur de display 
+function setDisplayStyle(element, displayValue) {
+    element.style.display = displayValue;
 }
 
-//création du bouton de fermeture de la modale
-function createCloseButton(){
-    const buttonClose = document.createElement("div");
-      buttonClose.setAttribute("role", "button");
-      buttonClose.classList.add("modal-close","modal-trigger");
-    
-    const iconClose = document.createElement("i");
-      iconClose.classList.add("fa-solid", "fa-xmark");
-      
-    document.querySelector(".modal-wrapper").appendChild(buttonClose);  
-    buttonClose.appendChild(iconClose);
-    return buttonClose
-  }
+// fonction pour afficher la premiere page ou non
+function FirstPageModalDisplay(displayValue){
+  const modalPageOne = document.getElementById('modal-page-one');
+  setDisplayStyle(modalPageOne, displayValue);
+};
 
+// fonction pour afficher la deuxieme page ou non 
+function secondPageModalDisplay(displayValue){
+  const modalPageTwo = document.getElementById('modal-page-two');
+  setDisplayStyle(modalPageTwo, displayValue);
+  createPrevButton();
+};  
+
+function modalePageSecond () {
+  FirstPageModalDisplay('none');
+  secondPageModalDisplay('flex');
+};
+
+function modalePagefirst () {
+  FirstPageModalDisplay('flex');
+  secondPageModalDisplay('none');
+};
+  
+  
+  
+ 
+ 
+     
+  
+  

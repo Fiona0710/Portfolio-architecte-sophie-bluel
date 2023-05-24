@@ -1,3 +1,4 @@
+
 // Récupération des données de l'API "works"
   fetchWorks()
   .then(dataWork => {
@@ -7,7 +8,7 @@
     
     
     // Affichage des projets dans la galerie
-    displayGallery(dataWork); 
+    fetchWorksDisplayGallery(".gallery");
         
     //Récupération de tous les filtres  
     const buttonFilters = document.querySelectorAll(".filter"); 
