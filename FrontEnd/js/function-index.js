@@ -49,15 +49,45 @@ function fetchWorksDisplayGallery(targetElement) {
           const figcaption = document.createElement('figcaption');
           figcaption.textContent = 'éditer';
           figure.appendChild(figcaption);
-          const trashButton = createButtonElement()
-
-    
+          
+          displayDeleteButton(figure);
+          displayExpandButtonOnHover(figure); 
         }
 
         galleryElement.appendChild(figure);
       });
     });
 }
+function displayDeleteButton(figure){
+  const deleteButton = createButtonElement(['modal-delete-button']);
+  const deleteIcon = createIconElement("fa-solid","fa-trash-can");
+  deleteButton.appendChild(deleteIcon);
+  figure.appendChild(deleteButton);
+  return deleteButton
+}
+
+function displayExpandButton(figure){
+  const expandButton = createButtonElement(['modal-expand-button']);
+  const expandIcon = createIconElement("fa-solid","fa-up-down-left-right");
+  expandButton.appendChild(expandIcon);
+  figure.appendChild(expandButton);
+  return expandButton
+}
+
+function displayExpandButtonOnHover(figure) {
+  const expandButton = displayExpandButton(figure);
+
+  setDisplayStyle(expandButton, 'none');
+
+  figure.addEventListener('mouseenter', () => {
+    setDisplayStyle(expandButton, 'flex');
+  });
+
+  figure.addEventListener('mouseleave', () => {
+    setDisplayStyle(expandButton, 'none');
+  });
+}
+
 
 
 // Supprime la classe "filter_active" de tous les filtres
@@ -101,9 +131,9 @@ function filterWorks(event){
 function createEditElement() {
     const displayEdit = createButtonElement(['positionEdit'],"modifier");
    
-    const iconElement = createIconElement("fa-regular", "fa-pen-to-square");
+    const iconEdit = createIconElement("fa-regular", "fa-pen-to-square");
     
-    displayEdit.insertBefore(iconElement, displayEdit.firstChild);
+    displayEdit.insertBefore(iconEdit, displayEdit.firstChild);
     return displayEdit;
 };
 
