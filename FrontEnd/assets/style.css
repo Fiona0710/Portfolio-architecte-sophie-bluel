@@ -167,14 +167,16 @@ header {
     align-items: center;
 	gap: 21px;
 }
-header button {
+
+.publish-changes-button{
 	background: #FFFFFF;
 	border-radius: 60px;
 	padding:11px 23px 11px 23px;
 	font-family: 'Work Sans';
 	font-size: 14px;
+	color:black;
+}
 
-}	
 main {
 	max-width: 1000px;
 	margin: auto;
@@ -362,6 +364,7 @@ nav li a:hover {
 	align-items: center;
     width: 630px;
 	max-height: 730px;
+	padding: 60px 0px 48px 0px;
 	background: #FFFFFF;
 	border-radius: 10px;
 	transform : translate(-50%,-50%);
@@ -374,16 +377,56 @@ nav li a:hover {
 	font-weight: 400;
 	padding-bottom: 46px;
 }
-.modal-wrapper p {
+#modal-page-one{
+	display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+#modal-page-two{
+	display: flex;
+    flex-direction: column;
+    align-items: center;
+	width: 77%;
+}
+
+
+#modal-page-one p {
 	font-family: 'Syne';
 	color: #B1663C;
 	cursor: pointer;
+}
+#modal-form, #modal-form-field,#modal-add-photo{
+	display: flex;
+	flex-direction: column;
+	
+	width: 100%;
+}
+#modal-form{
+	align-items: center;
+}
+
+#modal-form-field{
+	border-bottom:1px solid #B3B3B3 ;
+	padding-bottom: 46px;
+} 
+
+#modal-add-photo{
+	background:#E8F1F6 ;
+	height: 169px;
+	justify-content: center;
+	align-items: center;	
 }
 
 .modal-close{
 	position:absolute;
 	top:26px;
 	right: 30px;
+	cursor: pointer;
+}
+.modal-prev{
+	position:absolute;
+	top:29px;
+	left: 30px;
 	cursor: pointer;
 }
 
@@ -396,14 +439,29 @@ nav li a:hover {
 	border-bottom:1px solid #B3B3B3 ;
 	padding-bottom: 46px;	
 }
+#modal-page-two .modal-btn{
+	margin: 38px 0px 7px 0px !important;
+	background: #B3B3B3;
+}
+#modal-add-photo .modal-btn{
+	width:173px !important ;
+	margin-top:19px !important ;
+	color:#306685;	
+}
+
+#modal-add-photo p{
+	font-size: 10px;
+	
+}
 
 .modal-btn{
 	padding: 10px 0px;
 	width: 237px !important;
-	margin-top:38px !important ;
-	margin-bottom:23px !important ;
+	margin: 38px 0px 23px 0px !important;
 	cursor: pointer;
+	border: none;
 }
+
 #modal-gallery img{
 	height: 104px;
 	width: 78px;
@@ -430,14 +488,17 @@ nav li a:hover {
 	margin-top: 30px;
 }
 
-#contact input,#login input {
+#contact input,#login input,#modal-form-field input, #modal-form-field select {
 	height: 50px;
 	font-size: 1.2em;
 	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
 	border: none;
 }
+#modal-form-field select {
+	color:#6C6C6C;
+}
 
-#contact label, #login label {
+#contact label, #login label, #modal-form-field label {
 	margin: 2em 0 1em 0;
 }
 
