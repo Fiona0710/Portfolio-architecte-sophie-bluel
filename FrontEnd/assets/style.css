@@ -272,7 +272,7 @@ nav li a:hover {
 #introduction p {
 	margin-bottom: 0.5em;
 }
-
+/***************** gallery and filters ********************/
 #portfolio h2 {
 	text-align: center;
 	margin-bottom: 1.5em;
@@ -330,17 +330,22 @@ nav li a:hover {
 	width: 100%;
 
 }
-/* Modal */
 
-.modal {
-	position: absolute;
+/*************************************************************/
+
+/******************************** Modal ************************************************/
+.modal,.modal-move-button, .modal-delete-button {
 	display: flex;
 	justify-content: center;
+}
+.modal {
+	position: absolute;
 	top:0;
 	left:0;
 	width: 100%;
 	display:none;	
 }
+
 .modal.active{
 	display:block;
 }
@@ -358,10 +363,7 @@ nav li a:hover {
 	position: relative;
 	top:950px;
 	left: 50%;
-	display: flex;
-	flex-direction: column;
 	justify-content: center;
-	align-items: center;
     width: 630px;
 	max-height: 730px;
 	padding: 60px 0px 48px 0px;
@@ -369,6 +371,7 @@ nav li a:hover {
 	border-radius: 10px;
 	transform : translate(-50%,-50%);
 }
+
 .modal-wrapper h1{
 	text-align: center;
 	font-family: Work Sans;
@@ -377,12 +380,17 @@ nav li a:hover {
 	font-weight: 400;
 	padding-bottom: 46px;
 }
-#modal-page-one{
+
+#modal-page-one, #modal-page-two, .modal-wrapper{
 	display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+#modal-page-one{
 	position: relative;
 }
+
 .modal-move-button, .modal-delete-button{
 	height: 17px;
 	width: 17px;
@@ -391,37 +399,37 @@ nav li a:hover {
 	color: white;
 	position: absolute;	
 	top:6px;
-	display:flex;
-	justify-content: center;
 	align-items: center;
 }
+
 .modal-move-button{
 	font-size: 11.12px;
 	left:35px
 }
+
 .modal-delete-button{
 	font-size: 9px;
 	right:6px;
 }
+
+.confirm-delete, .error-message{
+	font-weight : bold !important;
+    font-family : 'Syne', sans-serif !important;
+}
+
 .confirm-delete{
 	position: absolute;
     top: 30%;
     border-radius: 10px;
     background: black;
-    font-weight: bold;
     padding: 5px;
     color: white;
     cursor: pointer;
-    font-family: 'Syne', sans-serif;
     font-size: 10px;
 	text-align: center;
-
 }
 
 #modal-page-two{
-	display: flex;
-    flex-direction: column;
-    align-items: center;
 	width: 77%;
 }
 
@@ -432,6 +440,7 @@ nav li a:hover {
 	top:0;
 
 }
+
 .container-img > *{
 	object-fit: cover;
 }
@@ -441,12 +450,14 @@ nav li a:hover {
 	color: #B1663C;
 	cursor: pointer;
 }
+
 #modal-form, .modal-form-field,.modal-add-photo{
 	display: flex;
 	flex-direction: column;
 	width: 100%;
 	max-width: 420px;
 }
+
 #modal-form{
 	align-items: center;
 }
@@ -463,18 +474,19 @@ nav li a:hover {
 	align-items: center;	
 	position: relative;
 }
-
-.modal-close{
-	position:absolute;
-	top:26px;
-	right: 30px;
+.modal-close, .modal-prev{
+	position: absolute;
 	cursor: pointer;
 }
+
+.modal-close{
+	top:26px;
+	right: 30px;
+}
+
 .modal-prev{
-	position:absolute;
 	top:29px;
 	left: 30px;
-	cursor: pointer;
 }
 
 #modal-gallery{
@@ -495,28 +507,27 @@ nav li a:hover {
 }
 
 .modal-add-photo p{
-	font-size: 10px;
-	
+	font-size: 10px;	
 }
+
 .error-message{
 	color: darkred !important;
-    font-weight : bold !important;
-    font-family : 'Syne', sans-serif !important;
+    
     font-size : 16px !important;
 	text-decoration: none !important;
 }
-.modal-btn{
-	padding: 10px 0px;
-	width: 237px !important;
-	margin: 38px 0px 23px 0px !important;
-	cursor: pointer;
-	border: none;
-}
-#modal-btn-submit{
-	padding: 10px 0px !important;
+.modal-btn, #modal-btn-submit {
+    padding: 10px 0px !important;
 	width: 237px !important;
 	cursor: pointer !important;
 	border: none !important;
+}
+    
+.modal-btn{
+	margin: 38px 0px 23px 0px !important;
+}
+
+#modal-btn-submit{
 	background:#A7A7A7 ;
 	margin: 38px 0px 7px 0px !important;
 }
@@ -530,8 +541,8 @@ nav li a:hover {
 	position: relative;
 }
  
+/****************************************************************/
 
-/*************/
 #contact, #login {
 	width: 50%;
 	margin: auto;
