@@ -1,3 +1,9 @@
+// Fonction pour recupérer les projets en faisant un appel a l'api 
+function fetchWorks() {
+  return fetch("http://localhost:5678/api/works")
+    .then(data => data.json() );           
+}
+
 // function to modify the display value 
 function setDisplayStyle(element, displayValue) {
     element.style.display = displayValue;

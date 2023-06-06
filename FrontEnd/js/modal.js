@@ -109,14 +109,14 @@ function deleteWork(workId) {
           refreshGallery(".gallery");
         } else if(response.status === 401) {
           // Gérer les erreurs de suppression
-          displayErrorMessage("Utilisateur non autorisé!!! Vous allez etre redirigé vers la page connexion.", "#modal-title");
+          displayErrorMessage("Utilisateur non autorisé!!! Vous allez etre redirigé vers la page connexion.", ".modal-title");
         setTimeout(() => {
           window.location.href = "login.html";
         }, 4000);
         }
       })
       .catch(error => {
-        displayErrorMessage("Une erreur s'est produite lors de la suppression de l'élément.", "#modal-title",error);
+        displayErrorMessage("Une erreur s'est produite lors de la suppression de l'élément.", ".modal-title",error);
       });  
 }
 

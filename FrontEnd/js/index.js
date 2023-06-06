@@ -30,12 +30,6 @@
 
 /******** Fonctions pour l'affichage des filtres et la galerie de la page d'acceuil ***********/
 
-// Fonction pour recupérer les projets en faisant un appel a l'api 
-function fetchWorks() {
-  return fetch("http://localhost:5678/api/works")
-    .then(data => data.json() );           
-}
-
 // Fonction pour afficher les filtres 
 function displayFilters(dataWork){
   const filters = document.getElementById("filters");
@@ -45,6 +39,7 @@ function displayFilters(dataWork){
 
   // Création d'une liste de categories en triant les catégories des différents travaux récupérées
   const categoryList = Array.from(new Set(dataWork.map(jsonWork => jsonWork.categoryId )));
+  
   /* find() permet de trouver le premier élément dans le tableau dataWork
    qui a le meme categoryId que le categoryId en cours.*/
   categoryList.forEach(categoryId => {      
