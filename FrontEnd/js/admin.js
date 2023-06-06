@@ -1,6 +1,40 @@
 
 const displayLogout = document.getElementById("logout");
 const token = window.localStorage.getItem("token");
+
+/************************* Fonctions pour rajouter des élèments coté admin ***********************/
+
+// fonction pour creer le bouton et l'icon "modifier"
+function createEditElement() {
+  const displayEdit = createButtonElement(['positionEdit'],"modifier");
+ 
+  const iconEdit = createIconElement("fa-regular", "fa-pen-to-square");
+  
+  displayEdit.insertBefore(iconEdit, displayEdit.firstChild);
+  return displayEdit;
+};
+
+// Fonction pour afficher la bande noir "mode édition"
+function displayHeadbandEditMod(){
+  const header = document.querySelector("header");
+  header.style.marginTop = "100px";
+
+  const headerH1 = document.querySelector("header h1");
+  const divBlackHeadband = document.createElement("div");
+  divBlackHeadband.id = "blackHeadband";
+  header.insertBefore(divBlackHeadband, headerH1);
+ 
+  const divEditMod =createButtonElement(['positionEdit'],"Mode édition");
+  divEditMod.style.paddingTop = "0";
+  divEditMod.insertBefore(createEditElement().firstChild, divEditMod.firstChild);
+
+  const publishChangesButton = createButtonElement (['publish-changes-button'],"publier les changements");
+
+  divBlackHeadband.appendChild(divEditMod);
+  divBlackHeadband.appendChild(publishChangesButton);
+};
+
+/**********************************************************************************************/
   
 if (token) {
     displayLogout.textContent = "logout";
@@ -19,9 +53,9 @@ if (token) {
     displayHeadbandEditMod();
 }
 // si l'utilisateur ferme l'onglet ou quitte le navigateur ,il se deconnecte   
-// window.addEventListener('unload', () => {
-//   window.localStorage.removeItem("token");
-// });
+window.addEventListener('unload', () => {
+  window.localStorage.removeItem("token");
+});
 
 // au click sur logout l'utilisateur se deconnecte
 displayLogout.addEventListener("click",() =>{
@@ -30,40 +64,9 @@ displayLogout.addEventListener("click",() =>{
   window.location.href = "./index.html";
 }); 
 
-/////// Modal //////
-
-secondPageModalDisplay('none');
-
-/*une class modal-trigger est ajouté au bouton close "X" ,
- au bouton "modifier" et sur l'overlay (background sombre)*/ 
- createCloseButton();
-const elements = document.querySelectorAll("#directionEdit .positionEdit, .modal-overlay");
-elements.forEach(element => {
-  element.classList.add('modal-trigger');
-});
 
 
-//On recupére toutes les class '.modal-trigger'
-const modalTriggers= document.querySelectorAll(".modal-trigger");
 
-//boucle pour parcourir les differentes class et au click sur l'une d'elle execute la fonction toogleModal
-modalTriggers.forEach(trigger => trigger.addEventListener("click", toogleModal))
-  
-
-//function qui déplace la class active sur la modale
-  function toogleModal(){
-    const modal = document.getElementById("modal");
-    modal.classList.toggle("active")
-    const modalElement = document.querySelector(".modal-wrapper");
-    modalElement.scrollIntoView({ behavior: "smooth", block: "start" });
-  }
-
-//Afficher la galerie de la modale 
-fetchWorksDisplayGallery("#modal-gallery");
-
-//Au click sur le bouton ajouter une 
-const buttonAddPhoto = document.querySelector('.modal-btn'); 
-buttonAddPhoto.addEventListener('click', modalePageSecond);
 
 
 
