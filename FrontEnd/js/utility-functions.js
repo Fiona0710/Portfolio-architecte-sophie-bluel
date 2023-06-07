@@ -1,4 +1,4 @@
-// Fonction pour recupérer les projets en faisant un appel a l'api 
+// Function to retrieve projects by calling the API
 function fetchWorks() {
   return fetch("http://localhost:5678/api/works")
     .then(data => data.json() );           
@@ -75,5 +75,22 @@ function displayErrorMessage(message, selector) {
   errorMessage.innerHTML = message;
 
   errorContainer.appendChild(errorMessage);
+}
+
+// Function to retrieve the title of the image
+function formatFileName(fileName) {
+  // Extract the name without the extension
+  const fileNameWithoutExtension = fileName.substring(0, fileName.lastIndexOf('.'));
+
+  // Remove digits at the end of the filename
+  const formattedFileName = fileNameWithoutExtension.replace(/\d+$/, '');
+
+  // Delete the dashes at the beginning and end of the name
+  const trimmedFileName = formattedFileName.replace(/^-+|-+$/g, '');
+
+  // Replace the remaining dashes with spaces
+  const finalFileName = trimmedFileName.replace(/-/g, ' ');
+
+  return finalFileName;
 }
 
