@@ -69,8 +69,12 @@ function refreshGallery(selector) {
 // Function to create and display an error message 
 function displayErrorMessage(message, selector) {
   const errorContainer = document.querySelector(selector);
-
+  const errorMessageElement = errorContainer.querySelector('.error-message');
+  if(errorMessageElement){
+    errorMessageElement.remove();
+  }
   const errorMessage = document.createElement('p');
+
   errorMessage.classList.add('error-message');
   errorMessage.innerHTML = message;
 

@@ -328,6 +328,7 @@ form.addEventListener('submit', function(event) {
     .then(response => {
       // If the query is correct
       if (response.status === 201) {
+        console.log("ok");
         /*Refresh the gallery display, reset the form to its original 
         state and display the first page of the modal*/ 
         refreshGallery("#modal-gallery");
@@ -336,11 +337,14 @@ form.addEventListener('submit', function(event) {
         containerImg.style.display = 'none';
         containerImg.src = '';
         addButton.style.visibility = 'visible';
+        const submitButton = document.getElementById('modal-btn-submit');
         submitButton.style.backgroundColor ='#A7A7A7';
+        window.scrollTo(600,600);
         modalePagefirst ();
+
   
       } else if (response.status === 400) {
-        displayErrorMessage("Requête incorrecte!!! Veuillez remplir tous les champs du formulaire.", "#modal-form");
+        displayErrorMessage("Veuillez remplir tous les champs du formulaire.", "#modal-form");
 
       } else if(response.status === 401) {
         displayErrorMessage("Utilisateur non autorisé!!! Vous allez etre redirigé vers la page connexion.", "#modal-form");
@@ -348,6 +352,7 @@ form.addEventListener('submit', function(event) {
       }
     })
     .catch(error => {
+      console.log(error);
       displayErrorMessage("Une erreur est survenue.", "#modal-form" ,error);
     });
 });
